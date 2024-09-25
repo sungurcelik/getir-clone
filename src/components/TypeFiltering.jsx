@@ -7,9 +7,10 @@ import {
 } from 'react-native';
 import {useState} from 'react';
 
-const TypeBox = ({item, active}) => {
+const TypeBox = ({setCat, item, active}) => {
   return (
     <TouchableOpacity
+      onPress={() => setCat(item)}
       style={[
         styles.touchableOpacity,
         item == active
@@ -31,8 +32,13 @@ const TypeFiltering = () => {
       bounces={true}
       horizontal={true}>
       {['Birlikte İyi Gider', 'Çubuk', 'Kutu', 'Külah', 'Çoklu', 'Bar'].map(
-        item => (
-          <TypeBox item={item} active={category} />
+        (item, id) => (
+          <TypeBox
+            setCat={setCategory}
+            item={item}
+            key={id}
+            active={category}
+          />
         ),
       )}
     </ScrollView>
@@ -59,5 +65,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     paddingVertical: height * 0.014,
     paddingHorizontal: 12,
+    borderBottomColor: 'lightgrey',
+    borderBottomWidth: 1,
   },
 });

@@ -1,17 +1,14 @@
-import {
-  ScrollView,
-  StyleSheet,
-} from 'react-native';
+import {ScrollView, StyleSheet} from 'react-native';
 import HeaderMain from '../components/HeaderMain';
 import BannerCarousel from '../components/BannerCarousel';
 import MainCategories from '../components/MainCategories';
 
 const HomeScreen = () => {
   return (
-    <ScrollView>
+    <ScrollView stickyHeaderIndices={[0]}>
       <HeaderMain />
       <BannerCarousel />
-      <MainCategories/>
+      <MainCategories />
     </ScrollView>
   );
 };
