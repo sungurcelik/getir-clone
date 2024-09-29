@@ -13,14 +13,7 @@ const CategoryItem = ({item}) => {
   return (
     <TouchableOpacity
       onPress={() => navigation.navigate('CategoryDetails', {category: item})}
-      style={{
-        width: width * 0.25,
-        height: width * 0.24,
-        flexDirection: 'column',
-        marginTop: 10,
-        alignItems: 'center',
-        justifyContent: 'space-between',
-      }}>
+      style={styles.touchableOpacity}>
       <Image
         style={{width: width * 0.18, height: width * 0.18, borderRadius: 8}}
         source={{
@@ -37,4 +30,13 @@ const CategoryItem = ({item}) => {
 export default CategoryItem;
 
 const {width, height} = Dimensions.get('window');
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  touchableOpacity: {
+    width: width * 0.25,
+    height: width * 0.24,
+    flexDirection: 'column',
+    marginTop: 10,
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+});

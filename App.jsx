@@ -1,15 +1,11 @@
-import {StyleSheet, Text, View} from 'react-native';
-import HomeScreen from './src/screens/HomeScreen';
+import {StyleSheet} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import RootNavigator from './src/navigators/RootNavigator';
 
 const App = () => {
   return (
     <NavigationContainer>
-      <RootNavigator/>
-      {/* <View style={styles.container}>
-        <HomeScreen />
-      </View> */}
+      <RootNavigator />
     </NavigationContainer>
   );
 };

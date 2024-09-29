@@ -2,7 +2,6 @@ import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import ProductItem from './ProductItem';
 import productsGetir from '../../assets/productsGetir';
-import {ColorSwatch, PenAdd} from 'iconsax-react-native';
 
 const ProductsContainer = () => {
   return (

@@ -1,3 +1,4 @@
+import {useNavigation} from '@react-navigation/native';
 import {Add} from 'iconsax-react-native';
 import {
   Dimensions,
@@ -5,12 +6,14 @@ import {
   StyleSheet,
   TouchableOpacity,
   View,
+  Text,
 } from 'react-native';
-import {Text} from 'react-native-svg';
-const {width, height} = Dimensions.get('window');
 const ProductItem = ({item}) => {
+  const navigation = useNavigation();
   return (
-    <TouchableOpacity style={styles.touchableOpacity}>
+    <TouchableOpacity
+      onPress={() => navigation.navigate('ProductDetails', {product: item})}
+      style={styles.touchableOpacity}>
       <Image
         style={styles.image}
         source={{
@@ -38,6 +41,7 @@ const ProductItem = ({item}) => {
 
 export default ProductItem;
 
+const {width, height} = Dimensions.get('window');
 const styles = StyleSheet.create({
   touchableOpacity: {
     width: width * 0.28,
@@ -47,8 +51,8 @@ const styles = StyleSheet.create({
     marginBottom: 6,
   },
   image: {
-    width: width * 0.3,
-    height: width * 0.28,
+    width: width * 0.285,
+    height: width * 0.285,
     borderRadius: 12,
     borderWidth: 0.1,
     borderColor: 'gray',
@@ -76,12 +80,13 @@ const styles = StyleSheet.create({
     width: 30,
     height: 30,
     borderWidth: 0.3,
+    flexDirection: 'row',
     borderColor: 'lightgrey',
     backgroundColor: 'white',
     position: 'absolute',
-    right: -6,
-    top: -6,
-    borderRadius: 6,
+    right: -10,
+    top: -10,
+    borderRadius: 5,
     alignItems: 'center',
     justifyContent: 'center',
     shadowRadius: 3.8,

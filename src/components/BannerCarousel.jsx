@@ -3,10 +3,8 @@ import {
   FlatList,
   Image,
   StyleSheet,
-  Text,
-  View,
 } from 'react-native';
-import React, {useState} from 'react';
+import {useState} from 'react';
 
 const {width, height} = Dimensions.get('window');
 const BannerCarousel = () => {

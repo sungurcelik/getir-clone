@@ -11,26 +11,32 @@ const HomeScreen = () => {
         />
         <View style={styles.headerOneView}>
           <Text style={{fontWeight: '600', fontSize: 16}}>Ev</Text>
-          <Text
-            style={{
-              fontWeight: '500',
-              fontSize: 12,
-              color: '#6E7480',
-              marginLeft: 6,
-              marginRight: 1,
-            }}>
+          <Text style={styles.address}>
             Girne Blv. Bahçelievler Mahallesi...
           </Text>
           <ArrowRight2 size={22} color="#5C3EBC" />
         </View>
-        <View style={styles.headerTwo}>
-          <Text style={{fontSize: 10, fontWeight: 'bold', color: '#5D3EBD'}}>
-            TVS
-          </Text>
-          <Text style={{fontSize: 20, fontWeight: 'bold', color: '#5D3EBD'}}>
-            13<Text style={{fontSize: 16, color: '#5D3EBD'}}>dk</Text>
-          </Text>
-        </View>
+      </View>
+      {/* TV Kısmı */}
+      <View style={styles.headerTwo}>
+        <Text
+          style={{
+            fontSize: 10,
+            fontWeight: 'bold',
+            color: '#5D3EBD',
+            textAlign: 'center',
+          }}>
+          TVS
+        </Text>
+        <Text
+          style={{
+            fontSize: 20,
+            fontWeight: 'bold',
+            color: '#5D3EBD',
+            textAlign: 'center',
+          }}>
+          13<Text style={{fontSize: 16, color: '#5D3EBD'}}>dk</Text>
+        </Text>
       </View>
     </View>
   );
@@ -79,5 +85,12 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     paddingRight: 10,
+  },
+  address: {
+    fontWeight: '500',
+    fontSize: 12,
+    color: '#6E7480',
+    marginLeft: 6,
+    marginRight: 3,
   },
 });
