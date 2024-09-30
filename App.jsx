@@ -1,6 +1,9 @@
 import {StyleSheet} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import RootNavigator from './src/navigators/RootNavigator';
+// tüm log, uyarı ve hata mesajlarını gizler
+import {LogBox} from 'react-native';
+LogBox.ignoreAllLogs();
 
 const App = () => {
   return (
