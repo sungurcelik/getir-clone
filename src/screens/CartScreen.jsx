@@ -10,19 +10,25 @@ import {
 import productsGetir from '../../assets/productsGetir';
 import CartItem from '../components/CartItem';
 import ProductItem from '../components/ProductItem';
+import {connect} from 'react-redux';
+import cartItems from '../redux/reducers/cartItem';
 
-const CartScreen = () => {
+const CartScreen = ({cartItems}) => {
   return (
     <View style={{flex: 1}}>
       <ScrollView style={{flex: 1}}>
         <FlatList
-          data={productsGetir.slice(0, 4)}
-          renderItem={({item}) => <CartItem product={item} />}
+          data={cartItems}
+          renderItem={({item}) => <CartItem product={item.product} />}
         />
+        <Text style={{padding: 15, fontWeight: 'bold', color: '#5D3EBD'}}>
+          Önerilen Ürünler
+        </Text>
         <ScrollView
           horizontal
           showsHorizontalScrollIndicator={false}
-          bounces={true}>
+          bounces={true}
+          style={{backgroundColor: 'white'}}>
           {productsGetir.map((item, index) => (
             <ProductItem key={index} item={item} />
           ))}
@@ -44,7 +50,14 @@ const CartScreen = () => {
   );
 };
 
-export default CartScreen;
+const mapStateToProps = state => {
+  const {cartItems} = state;
+  return {
+    cartItems: cartItems,
+  };
+};
+
+export default connect(mapStateToProps, null)(CartScreen);
 
 const {width, height} = Dimensions.get('window');
 const styles = StyleSheet.create({
@@ -53,6 +66,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: '4%',
+    position: 'absolute',
+    bottom: 0,
+    width: '100%',
+    backgroundColor: '#f8f8f8',
   },
   buttonTouch: {
     height: height * 0.06,

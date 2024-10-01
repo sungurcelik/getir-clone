@@ -8,7 +8,10 @@ import {
   View,
   Text,
 } from 'react-native';
-const ProductItem = ({item}) => {
+import {connect} from 'react-redux';
+import * as actions from '../redux/actions/cartActions';
+
+const ProductItem = ({item, addItemToCart}) => {
   const navigation = useNavigation();
   return (
     <TouchableOpacity
@@ -32,14 +35,26 @@ const ProductItem = ({item}) => {
       </View>
       <Text style={styles.productName}>{item.name} </Text>
       <Text style={styles.kgText}>{item.miktar}</Text>
-      <View style={styles.addText}>
+      <TouchableOpacity
+        onPress={() => {
+          addItemToCart(item);
+        }}
+        style={styles.addText}>
         <Add size={22} color="#5D3EBD" />
-      </View>
+      </TouchableOpacity>
     </TouchableOpacity>
   );
 };
 
-export default ProductItem;
+const mapDispatchToProps = dispatch => {
+  return {
+    addItemToCart: product => {
+      dispatch(actions.addToCart({quantity: 1, product}));
+    },
+  };
+};
+
+export default connect(null, mapDispatchToProps)(ProductItem);
 
 const {width, height} = Dimensions.get('window');
 const styles = StyleSheet.create({

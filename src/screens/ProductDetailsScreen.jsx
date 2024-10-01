@@ -21,7 +21,7 @@ const ProductDetailsScreen = props => {
     return <ActivityIndicator color={'#5D3EBD'} />;
   }
   return (
-    <View style={{flexDirection:"row", flex:1}}>
+    <View style={{flexDirection: 'row', flex: 1}}>
       <ScrollView>
         <ImageCarousel images={product.images} />
         <DetailBox
@@ -40,7 +40,7 @@ const ProductDetailsScreen = props => {
         </Text>
         <DetailProperty />
       </ScrollView>
-      <CardButton />
+      <CardButton item={product} />
     </View>
   );
 };

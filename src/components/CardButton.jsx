@@ -5,10 +5,13 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import {connect} from 'react-redux';
+import * as actions from '../redux/actions/cartActions';
 
-const CardButton = () => {
+const CardButton = ({item, addItemToCart}) => {
   return (
     <TouchableOpacity
+      onPress={() => addItemToCart(item)}
       style={{
         justifyContent: 'center',
         width: '100%',
@@ -34,6 +37,13 @@ const CardButton = () => {
   );
 };
 
-export default CardButton;
+const mapDispatchToProps = dispatch => {
+  return {
+    addItemToCart: product =>
+      dispatch(actions.addToCart({quantity: 1, product})),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(CardButton);
 const {width, height} = Dimensions.get('window');
 const styles = StyleSheet.create({});
