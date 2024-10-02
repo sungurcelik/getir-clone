@@ -11,15 +11,31 @@ import productsGetir from '../../assets/productsGetir';
 import CartItem from '../components/CartItem';
 import ProductItem from '../components/ProductItem';
 import {connect} from 'react-redux';
-import cartItems from '../redux/reducers/cartItem';
+import {useEffect, useState} from 'react';
 
 const CartScreen = ({cartItems}) => {
+  const [totalPrice, setTotalPrice] = useState(0);
+
+  const getProductsPrice = () => {
+    let total = 0;
+    cartItems.forEach(item => {
+      total += item.product.fiyatIndirimli;
+      setTotalPrice(total);
+    });
+    cartItems.length ? null : setTotalPrice(0);
+  };
+  useEffect(() => {
+    getProductsPrice();
+  }, [cartItems]);
+
   return (
     <View style={{flex: 1}}>
       <ScrollView style={{flex: 1}}>
         <FlatList
           data={cartItems}
-          renderItem={({item}) => <CartItem product={item.product} />}
+          renderItem={({item}) => (
+            <CartItem product={item.product} quantity={item.quantity} />
+          )}
         />
         <Text style={{padding: 15, fontWeight: 'bold', color: '#5D3EBD'}}>
           Önerilen Ürünler
@@ -42,7 +58,7 @@ const CartScreen = ({cartItems}) => {
         </TouchableOpacity>
         <View style={styles.buttonPrice}>
           <Text style={{color: '#5D3EBD', fontWeight: 'bold', fontSize: 18}}>
-            ₺24,00
+            {totalPrice.toFixed(2)}
           </Text>
         </View>
       </View>

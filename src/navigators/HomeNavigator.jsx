@@ -37,6 +37,7 @@ function MyStack({navigation, route, cartItems, clearCart}) {
       const price = (total += cartItem.product.fiyatIndirimli);
       setTotalPrice(price);
     });
+    cartItems.length ? null : setTotalPrice(0);
   };
 
   useEffect(() => {

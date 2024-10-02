@@ -1,6 +1,14 @@
-import {Dimensions, Image, StyleSheet, Text, View} from 'react-native';
-
-const CartItem = ({product}) => {
+import {
+  Dimensions,
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import * as actions from '../redux/actions/cartActions';
+import {connect} from 'react-redux';
+const CartItem = ({product, quantity, removeFromCart}) => {
   return (
     <View style={{width: '100%', backgroundColor: 'white'}}>
       <View
@@ -70,9 +78,11 @@ const CartItem = ({product}) => {
             shadowColor: 'gray',
             shadowOpacity: 0.4,
           }}>
-          <View style={{flex: 1, alignItems: 'center'}}>
+          <TouchableOpacity
+            onPress={() => removeFromCart(product)}
+            style={{flex: 1, alignItems: 'center'}}>
             <Text>-</Text>
-          </View>
+          </TouchableOpacity>
           <View
             style={{
               flex: 1,
@@ -82,7 +92,7 @@ const CartItem = ({product}) => {
               justifyContent: 'center',
             }}>
             <Text style={{fontWeight: 'bold', color: 'white', fontSize: 12}}>
-              2
+              {quantity}
             </Text>
           </View>
           <View style={{flex: 1, alignItems: 'center'}}>
@@ -94,6 +104,12 @@ const CartItem = ({product}) => {
   );
 };
 
-export default CartItem;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    removeFromCart: product => dispatch(actions.removeFromCart(product)),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(CartItem);
 const {width, height} = Dimensions.get('window');
 const styles = StyleSheet.create({});

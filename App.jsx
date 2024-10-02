@@ -5,12 +5,22 @@ import RootNavigator from './src/navigators/RootNavigator';
 import {LogBox} from 'react-native';
 import store from './src/redux/store';
 import {Provider} from 'react-redux';
+
 LogBox.ignoreAllLogs();
 
 const App = () => {
+  const linking = {
+    prefixes: ['myapp://'],
+    config: {
+      screens: {
+        CartScreen: 'cartscreen',
+      },
+    },
+  };
+  //xcrun simctl openurl booted "myapp://CartScreen"
   return (
     <Provider store={store}>
-      <NavigationContainer>
+      <NavigationContainer linking={linking}>
         <RootNavigator />
       </NavigationContainer>
     </Provider>
