@@ -1,4 +1,5 @@
-![Uploading GetirClone-ezgif.com-video-to-gif-converter.gif…]()
+![getirClone](https://github.com/user-attachments/assets/5ecc4ce4-4fc4-4fa7-ad03-5a1707c69030)
+
 
 
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
